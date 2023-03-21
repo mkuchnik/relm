@@ -1,0 +1,50 @@
+build==0.10.0
+certifi @ file:///croot/certifi_1671487769961/work/certifi
+charset-normalizer==3.1.0
+click==8.1.3
+cycler==0.11.0
+Cython==0.29.33
+filelock==3.10.7
+fonttools==4.38.0
+huggingface-hub==0.13.3
+idna==3.4
+importlib-metadata==6.1.0
+joblib==1.2.0
+kiwisolver==1.4.4
+matplotlib==3.3.3
+maturin==0.13.2
+mkl-fft==1.3.1
+mkl-random @ file:///tmp/build/80754af9/mkl_random_1626179032232/work
+mkl-service==2.4.0
+networkx==2.6.3
+nltk==3.6.5
+numpy==1.21.6
+packaging==23.0
+pandas==1.3.0
+Pillow==9.4.0
+psutil==5.9.4
+pydot==1.4.2
+pynini==2.1.5
+pyparsing==3.0.7
+pyproject_hooks==1.0.0
+python-dateutil==2.8.2
+pytz==2023.3
+PyYAML==6.0
+regex==2022.10.31
+relm @ file:///relm_code/relm/dist/relm-0.0.1-py3-none-any.whl
+relm-mkuchnik @ file:///relm_code/relm/dist/relm_mkuchnik-0.0.1-py3-none-any.whl
+requests==2.28.2
+rust_regex_compiler_bindings @ file:///tmp/.tmpiFy1Cy/rust_regex_compiler_bindings-0.1.0-cp37-cp37m-linux_x86_64.whl
+scipy==1.7.3
+seaborn==0.11.1
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+tokenizers==0.12.1
+tomli==2.0.1
+torch==1.10.0
+torchaudio==0.10.0
+torchvision==0.11.0
+tqdm==4.65.0
+transformers==4.21.3
+typing_extensions==4.5.0
+urllib3==1.26.15
+zipp==3.15.0

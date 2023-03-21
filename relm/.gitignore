@@ -1,0 +1,7 @@
+*.txt
+build/
+dist/
+tests/__pycache__
+*.egg-info
+*.gv
+*.pdf

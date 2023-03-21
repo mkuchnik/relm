@@ -1,0 +1,10 @@
+*.log
+*.pdf
+*.gv
+*.json
+*.csv
+*.ipynb_checkpoints/
+*.pgf
+*.dot
+*.out
+*.txt

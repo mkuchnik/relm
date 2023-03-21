@@ -1,0 +1,2 @@
+validators==0.20.0
+httplib2==0.17.4
