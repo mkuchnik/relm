@@ -195,10 +195,8 @@ def _simplify_automata(test_relm,
         if token_remapper:
             # NOTE(mkuchnik): Epsilon (0) may be added
             assert old_token == 0 or old_token >= 60000, "{}".format(old_token)
-            assert old_token <= (60000 + 56257), "{}".format(old_token)
         else:
             assert old_token >= 0, "{}".format(old_token)
-            assert old_token <= 56257, "{}".format(old_token)
         assert isinstance(c, str), \
             "Expected str got {}".format(type(c))
         try:

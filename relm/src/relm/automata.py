@@ -757,22 +757,6 @@ def _num_strings_counter_naive_fn(max_length, s, M, f) -> int:
     return int(s.T.dot(M**max_length).dot(f).toarray()[0][0])
 
 
-def _num_strings_counter_JNF_fn(max_length, s, M, f) -> int:
-    """Count automata strings with combinatorics.
-
-    Takes starting state s, transition matrix M, and final states, f, and
-    returns the number of max_length strings.
-
-    This implementation uses Jordan normal form, which reduces exponentiation
-    over matrices to exponentiation of a list of numbers.
-
-
-    Algorithm from:
-    https://math.stackexchange.com/questions/2245373/find-the-number-of-accepted-matches-for-a-dfa-defined-by-a-regular-expression
-    """
-    raise NotImplementedError("Implement JNF")
-
-
 def string_cardinality_generator_for_automata(automata, dtype=None):
     """Count the number of strings of length m in an automata.
 

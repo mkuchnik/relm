@@ -25,6 +25,9 @@ cancel the run after sufficient extractions have been attempted.
 bash run_insults_gpt2xl.sh
 ```
 
+To make this experiment run faster, consider changing `MAX_SAMPLES` in
+the scripts as well as passing `--max_results`.
+
 Once results are run, you can plot them with:
 ```bash
 python3 plot_results.py

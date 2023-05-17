@@ -36,10 +36,6 @@ baseline_test() {
 }
 
 relm_test
-LENGTH=1  # Power of 2
-baseline_test
-LENGTH=2  # Power of 2
-baseline_test
 LENGTH=4  # Power of 2
 baseline_test
 LENGTH=8  # Power of 2

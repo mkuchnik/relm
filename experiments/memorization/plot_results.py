@@ -1,7 +1,7 @@
 """Check if URLs are valid."""
 
 import argparse
-import concurrent
+import concurrent.futures
 import json
 import socket
 
@@ -11,6 +11,7 @@ import pandas as pd
 import seaborn as sns
 import tqdm
 import validators
+import re
 
 model = "gpt2-xl"
 
@@ -40,6 +41,7 @@ clean_urls = []
 for u in urls:
     prefix = "None"
     clean_url = u
+    clean_url = re.sub("<|endoftext|>$", "", clean_url.split("\n")[0])
     prefixes.append(prefix)
     clean_urls.append(clean_url)
 df["prefixes"] = prefixes

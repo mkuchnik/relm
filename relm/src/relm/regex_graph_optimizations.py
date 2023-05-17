@@ -1,5 +1,4 @@
 """Complicated (compiler-like) graph optimizations for regex."""
-import collections
 import itertools
 import pprint
 from typing import Optional
@@ -181,6 +180,11 @@ def _simplify_automata_symbols_DFS(
             except KeyError:
                 d[s] = [a]
 
+    # Indexed by ilabel
+    _indexed_arc_cache = {s: {a.ilabel: a.nextstate for a in arcs}
+                          for s, arcs
+                          in _arcs_cache.items()}
+
     def simplify_automata_iter(arcs_cache, first_symbol_arcs_cache, substr):
         """Yield shortcut edges (from, to) for a word.
 
@@ -204,37 +208,26 @@ def _simplify_automata_symbols_DFS(
         # match on many "a" "aa" "aaa" etc. in a chain.
         # In that case, we would match on all edges, and the longest edge would
         # traverse all |w| length of those edges.
-        for s, arcs in d.items():
-            for a in arcs:
-                # Start BFS
-                Q = [((a.nextstate,), list(substr[1:]))]
-                Q = collections.deque(Q)
-                visited = set()
-                while Q:
-                    past_states, to_match = Q.popleft()
-                    curr = past_states[-1]
-                    if not len(to_match):
-                        yield s, curr, past_states
-                    else:
-                        try:
-                            nth_symbol = \
-                                inverted_input_symbols[to_match[0]]
-                        except KeyError:
-                            continue
-                        try:
-                            # lookup arcs from this state on symbol
-                            next_arcs = \
-                                first_symbol_arcs_cache[nth_symbol][
-                                    past_states[-1]]
-                        except KeyError:
-                            continue
-                        for next_a in next_arcs:
-                            proposed_states = (past_states +
-                                               (next_a.nextstate,))
-                            if proposed_states not in visited:
-                                Q.append((proposed_states,
-                                          to_match[1:]))
-                                visited.add(proposed_states)
+        for s in d.keys():
+            curr_state = s
+            past_states = [s]
+            success = True
+            for nth_char in substr:
+                try:
+                    nth_symbol = inverted_input_symbols[nth_char]
+                except KeyError:
+                    success = False
+                    break
+                next_state = _indexed_arc_cache[curr_state].get(
+                    nth_symbol, None)
+                if next_state is not None:
+                    curr_state = next_state
+                    past_states.append(next_state)
+                else:
+                    success = False
+                    break
+            if success:
+                yield s, curr_state, past_states
 
     one = fst.Weight.one(automata.weight_type())
     new_automata = automata.copy()

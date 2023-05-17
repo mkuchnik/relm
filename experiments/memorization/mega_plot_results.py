@@ -38,7 +38,7 @@ orders.append("ReLM")
 df1["with_duplicates"] = True
 dfs.append(df1)
 
-for n in [1, 2, 4, 8, 16, 32, 64]:
+for n in [4, 8, 16, 32, 64]:
     f =  \
         "{}/baseline_{}/results_joined_gpt2-xl.csv".format(top_level_dir, n)
     df = pd.read_csv(f)

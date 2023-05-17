@@ -38,6 +38,10 @@ After install, you will want to create the environment. To create it:
 
 ```bash
 conda create -n py37 python=3.7
+```
+
+To activate the environment:
+```bash
 conda activate py37
 ```
 
@@ -45,23 +49,6 @@ You can then install dependencies inside this environment.
 We additionally use Rust as a backend for parts of the ReLM runtime.
 Therefore, you will need to install a Rust compiler and build the corresponding
 extensions.
-
-###### Initial Setup
-Install miniconda (as described above).
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-```
-
-Add a Python3.7 env, `py37`.
-```bash
-conda create python=3.7 -n py37
-```
-
-Activate the environment
-```bash
-conda activate py37
-```
 
 ###### PyTorch
 Install PyTorch (more instructions
@@ -95,7 +82,7 @@ apt install build-essential
 Build and install the Rust bindings for ReLM.
 ```bash
 pushd rust_regex_compiler
-cargo build
+cargo build --release
 popd
 pushd rust_regex_compiler_bindings
 bash install_deps.sh
@@ -112,25 +99,31 @@ popd
 
 ###### Additional Dependencies
 You can install additional dependencies from the provided requirements file.
-We recommend installing from there to avoid unnecessary constraints on package
-versions.
 ```bash
-pip install -r requirements_minimal.txt
+pip install -r requirements.txt
 ```
-
-For reference, a full set of requirements for CPU only are provided in:
-`requirements_full_cpu.txt`.
-Note that this contain file paths to locally installed ReLM components and does
-not contain CUDA variants of PyTorch.
-Thus, it is recommended to use this file as a guide (and not an exact formula)
-to resolve dependency issues.
 
 ## Getting Started
 We recommend checking out the Jupyter Notebook
 [Introduction_to_ReLM](notebook/Introduction_to_ReLM.ipynb) to get started.
+
+To run it, you will need to install additional dependencies in the conda
+environment.
+```bash
+conda install nb_conda
+conda install -c conda-forge ipywidgets
+```
+
+Then you can do:
+```bash
+cd notebook
+jupyter-notebook Introduction_to_ReLM.ipynb
+```
 
 ## Experiments
 Experiments in the paper can be found under the [Experiments](experiments)
 directory.
 Each experiment has its own README with instructions.
 Namely, we use the datasets The Pile and LAMBADA with GPT2 and GPT2-XL models.
+These experiments can take a while to run and can be made smaller by limiting
+the number of samples generated.

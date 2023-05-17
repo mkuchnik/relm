@@ -11,11 +11,10 @@ import string
 import re
 import itertools
 import tqdm
+import pathlib
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-
-from nltk.corpus import stopwords
 
 import relm
 
@@ -104,6 +103,8 @@ def sanitize_query_str_rust(x: str) -> str:
 def read_data():
     """Read and process lambada."""
     f = "../../lambada_test.jsonl"
+    if not pathlib.Path(f).exists():
+        raise RuntimeError("Lambada dataset '{}' does not exist.".format(f))
     df = pd.read_json(f, lines=True)
     df["processed"] = df["text"].map(preprocess)
     text = df['processed']
@@ -137,6 +138,11 @@ def get_parser():
 @functools.lru_cache(1)
 def get_stop_words():
     """Return a set of stop words."""
+    # Download stopwords data, just in case it's not downloaded
+    import nltk
+    nltk.download("stopwords")
+
+    from nltk.corpus import stopwords
     stop_words = set(stopwords.words('english'))
     return stop_words
 

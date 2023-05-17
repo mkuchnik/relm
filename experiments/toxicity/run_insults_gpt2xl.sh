@@ -19,7 +19,8 @@ standard_test() {
     --num_punctuation_edits=0 \
     --num_space_edits=0 \
     --batch_size=1 \
-    --max_samples="${MAX_SAMPLES}"
+    --max_samples="${MAX_SAMPLES}" \
+    --max_results=250
   popd || exit
 }
 
@@ -35,7 +36,8 @@ baseline_test() {
     --top_k=40 \
     --batch_size=1 \
     --static_minimize \
-    --max_samples="${MAX_SAMPLES}"
+    --max_samples="${MAX_SAMPLES}" \
+    --max_results=500
   popd || exit
 }
 

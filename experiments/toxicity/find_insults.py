@@ -136,7 +136,7 @@ def prompt_sampler_sentence(base_prompts, query_str, prompt_length,
     re_matcher = re.compile(query_str)
     prompt_sentences = map(lambda prompt: nltk.tokenize.sent_tokenize(prompt),
                            base_prompts)
-    prompt_sentences = {xx for x in prompt_sentences for xx in x}
+    prompt_sentences = dict.fromkeys(xx for x in prompt_sentences for xx in x)
     prompt_sentences = list(prompt_sentences)
     prompt_sentences = sorted(prompt_sentences, key=lambda x: len(x))
 

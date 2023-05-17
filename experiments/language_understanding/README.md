@@ -24,6 +24,9 @@ bash run_lambada_gpt2.sh
 bash run_lambada_gpt2xl.sh 
 ```
 
+To make this experiment run faster, consider changing `MAX_RESULTS` in
+the scripts.
+
 To print the accuracy results, run:
 
 ```bash

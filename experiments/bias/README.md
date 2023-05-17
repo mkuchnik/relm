@@ -15,6 +15,8 @@ run_bias_gpt2_inference.sh
 run_bias_gpt2xl_inference.sh
 ```
 
+To make this experiment run faster, consider changing `MAX_SAMPLES` in
+the scripts.
 Once the experiments have run, you can plot them by using the plotter script.
 The plotter script points to the directory containing the experiments and plots
 all results in the current directory

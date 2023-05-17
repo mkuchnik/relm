@@ -257,7 +257,10 @@ class SimpleSearchQuery:
             experimental_advanced_parsing_simplify=True,
             experimental_advanced_parsing_static_minimize=(
                 self.tokenization_strategy ==
-                QueryTokenizationStrategy.CANONICAL_TOKENS),
+                QueryTokenizationStrategy.CANONICAL_TOKENS or
+                self.tokenization_strategy ==
+                QueryTokenizationStrategy.PREFIX_CANONICAL_TOKENS
+            ),
             experimental_advanced_parsing_static_minimize_prefix_only=(
                 self.tokenization_strategy ==
                 QueryTokenizationStrategy.PREFIX_CANONICAL_TOKENS),

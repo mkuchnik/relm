@@ -12,6 +12,8 @@ bash run_url_gpt2xl.sh
 
 This will generate a results directory, which has a `results.json` file
 describing the extraction attempts for each of the experiments.
+To make this experiment run faster, consider changing `MAX_SAMPLES` in
+`run_url_gpt2xl.sh`.
 
 Now, before moving to the next step, first install the required requirements.
 
@@ -23,14 +25,7 @@ Then, we post-process these file to determine if they are valid URLs with:
 
 ```bash
 pip3 install -r requirements.txt
-python3 plot_results.py test_memorization_gpt2-xl/relm
-python3 plot_results.py test_memorization_gpt2-xl/baseline_1
-python3 plot_results.py test_memorization_gpt2-xl/baseline_2
-python3 plot_results.py test_memorization_gpt2-xl/baseline_4
-python3 plot_results.py test_memorization_gpt2-xl/baseline_8
-python3 plot_results.py test_memorization_gpt2-xl/baseline_16
-python3 plot_results.py test_memorization_gpt2-xl/baseline_32
-python3 plot_results.py test_memorization_gpt2-xl/baseline_64
+for f in test_memorization_gpt2-xl/*; do python3 plot_results.py $f; done
 ```
 
 NOTE: Please be mindful of how many URLs you are validating and how quickly you
