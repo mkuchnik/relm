@@ -1,0 +1,13 @@
+[package]
+name = "relm"
+version = "1.1.0"
+edition = "2021"
+
+[lib]
+name = "relm_rust_regex_compiler_bindings"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.16.5", features = ["extension-module"] }
+regex-syntax = "0.6.27"
+rustfst = "0.11.5"

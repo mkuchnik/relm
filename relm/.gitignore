@@ -5,3 +5,6 @@ tests/__pycache__
 *.egg-info
 *.gv
 *.pdf
+Cargo.lock
+target
+*.so

@@ -1,6 +1,32 @@
+[tool.maturin]
+python-source = "python"
+module-name = "relm.relm_rust_regex_compiler_bindings"
+
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+requires = ["maturin>=0.13"]
+build-backend = "maturin"
+
+
+[project]
+name = "relm"
+version = "1.1.0"
+authors = [
+  {name = "Michael Kuchnik", email = "michaelkuchnik@gmail.com"},
 ]
-build-backend = "setuptools.build_meta"
+description = "Validate Large Language Models with Regular Expressions"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["LLM", "regular expression"]
+license = {text = "Apache License 2.0"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "numpy",
+    "psutil",
+    "pynini",
+    "scipy",
+    "transformers",
+    "lazydict",
+    "pyparsing >= 3.0.0",
+]

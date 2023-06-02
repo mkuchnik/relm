@@ -2,7 +2,6 @@
 
 set -e
 
-python3 -m pip install --upgrade build
-python3 -m build
-python3 -m pip uninstall -y relm-mkuchnik || echo "No existing build"
-python3 -m pip install dist/*.whl
+python3 -m pip install maturin==1.0.0
+python3 -m pip uninstall -y relm || echo "No existing build"
+maturin develop --release
